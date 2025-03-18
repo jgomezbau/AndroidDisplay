@@ -1,0 +1,17 @@
+[Unit]
+Description=Android Display - Use Android tablet as external monitor
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/juanbau/Desarrollos/AndroidDisplay/fedora-app
+ExecStartPre=/home/juanbau/Desarrollos/AndroidDisplay/fedora-app/virtual-display.sh
+ExecStart=/bin/bash -c '/home/juanbau/Desarrollos/AndroidDisplay/fedora-app/stream-display.sh VIRTUAL1 & python3 /home/juanbau/Desarrollos/AndroidDisplay/fedora-app/input-handler.py --display VIRTUAL1'
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

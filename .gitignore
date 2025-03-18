@@ -1,0 +1,17 @@
+# Ignorar la carpeta node_modules
+/node_modules
+.cache/
+/dist
+/android-app/build
+
+# Ignorar archivos de configuración
+#config.json
+#secrets.env
+
+# Ignorar archivos temporales
+*.tmp
+*.log
+
+# Ignorar archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db

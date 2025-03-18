@@ -1,0 +1,9 @@
+# Lenovo P11 Tablet (Android 11) - USB-C connection
+# Note: You will need to update the vendor and product IDs with the actual values from your device
+# Use 'lsusb' command when the device is connected to find these values
+
+# When device is connected, start the Android Display service
+SUBSYSTEM=="usb", ATTR{idVendor}=="17ef", ATTR{idProduct}=="7c70", ACTION=="add", RUN+="/bin/systemctl start android-display.service"
+
+# When device is disconnected, stop the Android Display service
+SUBSYSTEM=="usb", ATTR{idVendor}=="17ef", ATTR{idProduct}=="7c70", ACTION=="remove", RUN+="/bin/systemctl stop android-display.service"

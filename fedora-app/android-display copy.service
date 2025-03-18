@@ -1,0 +1,19 @@
+[Unit]
+Description=Android Display - Usar P11 TB -J606F as External Monitor
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/AndroidDisplay
+ExecStartPre=/opt/AndroidDisplay/start-virtual-monitor.sh
+ExecStart=/bin/bash -c '/opt/AndroidDisplay/gnirehtet run & /opt/AndroidDisplay/start-stop vnc.sh'
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+
+
